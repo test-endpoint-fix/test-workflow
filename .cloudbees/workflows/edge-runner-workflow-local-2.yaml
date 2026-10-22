@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Say hello
         # note: uses is only supported when running in container based execution mode
-        uses: docker://alpine3.17
+        uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
           echo "hello world "
