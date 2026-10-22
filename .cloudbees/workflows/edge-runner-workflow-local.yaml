@@ -12,6 +12,7 @@ jobs:
       - jany-label-2
     steps:
       - name: Say hello
+        continue-on-error: true
         run: |
           echo "hello world"
          
