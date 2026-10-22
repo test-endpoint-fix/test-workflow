@@ -22,4 +22,5 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          ipconfig getifaddr en0 
+          nslookup host.docker.internal | awk '/Address:/ {print $2}' | tail -n1
+ 
