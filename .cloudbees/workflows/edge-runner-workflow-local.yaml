@@ -12,5 +12,4 @@ jobs:
       - jany-label-2
     steps:
       - name: Say hello
-        run: |
-          echo "hello world from edge runner"
+         
