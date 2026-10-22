@@ -13,6 +13,4 @@ jobs:
     steps:
       - name: Say hello
         continue-on-error: true
-        run: |
-          echo "hello world"
          
