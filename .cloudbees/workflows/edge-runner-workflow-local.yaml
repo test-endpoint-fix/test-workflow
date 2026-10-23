@@ -14,7 +14,6 @@ jobs:
     steps:
       - name: Say hello with timeout
         timeout-minutes: 1
-        continue-on-error: true
         # note: uses is only supported when running in container based execution mode
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
