@@ -1,26 +1,25 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
-name: My workflow
-
+name: edge-time-out-continue-error-true
 on:
   push:
     branches:
-      - '**'
+      - "**"
   workflow_dispatch:
-
 jobs:
   build:
-    runs-on: [jany-label-3]
+    runs-on:
+      - jany-label-3
     steps:
       - name: Say hello
-        # note: uses is only supported when running in container based execution mode
+        timeout-minutes: 1
+        continue-on-error: true
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
           echo "hello world "
-      - name: Get version
+      - name: second step after time out
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          nslookup host.docker.internal | awk '/Address:/ {print $2}' | tail -n1
- 
+          echo "hello world after time out + coe true"
