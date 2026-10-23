@@ -1,17 +1,22 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
-name: edge-runner-workflow-local
+name: edge-job-timeout-continue-on-error
 on:
   push:
     branches:
       - "**"
   workflow_dispatch:
 jobs:
-  build:
-    runs-on:
-      - jany-label-2
+  timeout-step:
+    runs-on: [jany-label-3]
     steps:
-      - name: Say hello
+      - name: timeout-step
+        timeout-minutes: 1
+        continue-on-error: true
         run: |
-          echo "hello world" 
+          echo "hello world" && sleep 100
+
+      - name: step after timeout
+        run: |
+          echo "hello world"
          
